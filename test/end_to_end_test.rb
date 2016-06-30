@@ -1,7 +1,5 @@
 # encoding: utf-8
-require 'koara'
-require 'koara/xml/xmlrenderer'
-require 'minitest/autorun'
+require 'test_helper'
 
 class EndToEndTest < MiniTest::Unit::TestCase
 
@@ -1033,7 +1031,7 @@ class EndToEndTest < MiniTest::Unit::TestCase
 
   def assert_output(file, modules)
     kd = File.read("#{TEST_DIR}/input/end2end.kd")
-    html = File.read("#{TEST_DIR}/output/html5/end2end/#{file}.htm")
+    html = File.read("#{TEST_DIR}/output/xml/end2end/#{file}.xml")
 
     parser = Koara::Parser.new
 

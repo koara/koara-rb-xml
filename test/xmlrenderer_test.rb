@@ -1,6 +1,4 @@
-require 'koara'
-require 'koara/xml/xmlrenderer'
-require 'minitest/autorun'
+require 'test_helper'
 
 class XmlRendererTest < MiniTest::Unit::TestCase
 

@@ -1,8 +1,8 @@
 # encoding: utf-8
-require 'koara/html/html5renderer'
+require 'koara/xml/xmlrenderer'
 
 module Koara
-  module Html
-    VERSION = "0.9.0"
+  module Xml
+    VERSION = "0.12.0"
   end
 end

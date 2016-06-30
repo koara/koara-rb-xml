@@ -20,9 +20,9 @@ module Koara
       end
 
       def visit_heading(node)
-        @level++
+        @level += 1
         indent
-        @out << "<heading level=\"" + node.value + "\""
+        @out << "<heading level=\"#{node.value}\""
         if node.children && node.children.length > 0
           @out << ">\n"
           @level += 1
@@ -41,7 +41,7 @@ module Koara
         indent
         @out << '<blockquote'
         if node.children && node.children.length > 0
-          out << ">\n"
+          @out << ">\n"
           @level+=1
           node.children_accept(self)
           @level-=1
@@ -53,22 +53,22 @@ module Koara
         end
       end
 
-      def visit_listblock(node)
+      def visit_list_block(node)
         @level += 1
         indent
         @out << "<list ordered=\"#{node.ordered}\">\n"
-        node.childre_accept(self)
+        node.children_accept(self)
         indent
         @out << "</list>\n"
         @level -= 1
       end
 
-      def visit_listitem(node)
+      def visit_list_item(node)
         @level += 1
         indent
-        out << "<listitem"
+        @out << "<listitem"
         if node.number
-          out << " number=\"#{node.number}\"";
+          @out << " number=\"#{node.number}\"";
         end
         if node.children && node.children.length > 0
           @out << ">\n"
@@ -112,7 +112,7 @@ module Koara
         @level -= 1
       end
 
-      def visit_blockelement(node)
+      def visit_block_element(node)
       end
 
       def visit_image(node)
@@ -125,15 +125,15 @@ module Koara
         @out << "</image>\n"
       end
 
-     def visit_link(node)
-      indent
-      @out << "<link url=\"#{escape_url(node.value)}\">\n"
-      #               level++;
-      #               node.childrenAccept(this);
-      #               level--;
-      #               indent();
-      #               out.append("</link>\n");
-     end
+      def visit_link(node)
+        indent
+        @out << "<link url=\"#{escape_url(node.value)}\">\n"
+        @level += 1
+        node.children_accept(self)
+        @level -= 1
+        indent
+        @out << "</link>\n"
+      end
 
       def visit_text(node)
         indent()
@@ -142,57 +142,52 @@ module Koara
         @out << "</text>\n"
       end
 
-      #
-      #             @Override
-      #             public void visit(Strong node) {
-      #               indent();
-      #               out.append("<strong>\n");
-      #               level++;
-      #               node.childrenAccept(this);
-      #               level--;
-      #               indent();
-      #               out.append("</strong>\n");
-      #             }
-      #
-      #             @Override
-      #             public void visit(Em node) {
-      #               indent();
-      #               out.append("<em>\n");
-      #               level++;
-      #               node.childrenAccept(this);
-      #               level--;
-      #               indent();
-      #               out.append("</em>\n");
-      #             }
-      #
-      #             @Override
-      #             public void visit(Code node) {
-      #               indent();
-      #               out.append("<code>\n");
-      #               level++;
-      #               node.childrenAccept(this);
-      #               level--;
-      #               indent();
-      #               out.append("</code>\n");
-      #             }
-      #
-      #             @Override
-      #             public void visit(LineBreak node) {
-      #               indent();
-      #               out.append("<linebreak />\n");
-      #             }
-      #
-      #             public String escapeUrl(String text) {
-      #               return text.replaceAll(" ", "%20")
-      #                          .replaceAll("\"", "%22")
-      #                          .replaceAll("`", "%60")
-      #                          .replaceAll("<", "%3C")
-      #                          .replaceAll(">", "%3E")
-      #                          .replaceAll("\\[", "%5B")
-      #                          .replaceAll("\\]", "%5D")
-      #                          .replaceAll("\\\\", "%5C");
-      #             }
-      #
+      def visit_strong(node)
+        indent
+        @out << "<strong>\n"
+        @level += 1
+        node.children_accept(self)
+        @level -= 1
+        indent
+        @out << "</strong>\n"
+      end
+
+      def visit_em(node)
+        indent
+        @out << "<em>\n"
+        @level += 1
+        node.children_accept(self)
+        @level -= 1
+        indent
+        @out << "</em>\n"
+      end
+
+      def visit_code(node)
+        indent
+        @out << "<code>\n"
+        @level += 1
+        node.children_accept(self)
+        @level -= 1
+        indent
+        @out << "</code>\n"
+      end
+
+      def visit_linebreak(node)
+        indent
+        @out << "<linebreak />\n"
+      end
+
+      def escape_url(text)
+        return text.gsub(' ', '%20')
+                   .gsub("\"", '%22')
+                   .gsub('`', '%60')
+                   .gsub('<', '%3C')
+                   .gsub('>', '%3E')
+                   .gsub('[', '%5B')
+                   .gsub(']', '%5D')
+                   .gsub("\\", '%5C')
+      end
+
       def indent
         repeat = @level * 2
         repeat.times {
@@ -204,7 +199,7 @@ module Koara
         text.gsub('&', '&amp;')
             .gsub('<', '&lt;')
             .gsub('>', '&gt;')
-            .gsub('\"', 'quot;')
+            .gsub('"', '&quot;')
       end
 
       def output
