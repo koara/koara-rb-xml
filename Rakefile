@@ -1,3 +1,6 @@
+require 'bundler'
+Bundler.setup
+
 task :default => 'test:unit'
 
 require 'rake/testtask'
