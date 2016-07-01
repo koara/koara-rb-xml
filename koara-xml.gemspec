@@ -2,9 +2,11 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
+require 'koara/xml'
+
 Gem::Specification.new do |s|
   s.name          = 'koara-xml'
-  s.version       = '0.12.0'
+  s.version      = Koara::Xml::VERSION
   s.authors       = ['Andy Van Den Heuvel']
   s.email         = ['andy.vandenheuvel@gmail.com']
   s.summary       = 'Koara to HTML parser written in Ruby'

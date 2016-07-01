@@ -1,5 +1,5 @@
-source "https://rubygems.org"
+source "https://rubygems.org/"
 
-gem 'koara', '= 0.9.0'
+gem "koara", "~>0.12.0"
 
 gemspec
