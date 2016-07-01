@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/koara/koara-rb-xml.svg)](https://travis-ci.org/koara/koara-rb-xml)
 [![Coverage Status](https://img.shields.io/coveralls/koara/koara-rb-xml.svg)](https://coveralls.io/github/koara/koara-rb-xml?branch=master)
-[![Gem](https://img.shields.io/gem/v/koara-xml.svg?maxAge=2592000)]()
+[![Gem](https://img.shields.io/gem/v/koara-xml.svg?maxAge=2592000)](https://rubygems.org/gems/koara-xml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/koara/koara-rb-xml/blob/master/LICENSE)
 
 # Koara-rb-xml
