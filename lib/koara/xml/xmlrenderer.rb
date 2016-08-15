@@ -3,6 +3,7 @@ module Koara
   module Xml
     class XmlRenderer
       attr_accessor :declaration_tag
+      attr_accessor :hard_wrap
 
       def visit_document(node)
         @level = 0
@@ -173,8 +174,9 @@ module Koara
       end
 
       def visit_linebreak(node)
+        hard = @hard_wrap || node.explicit
         indent
-        @out << "<linebreak />\n"
+        @out << "<linebreak explicit=\"#{hard}\"/>\n"
       end
 
       def escape_url(text)
