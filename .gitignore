@@ -1,4 +1,4 @@
 *.gem
 .class
-.idea
+.idea/*
 .project
