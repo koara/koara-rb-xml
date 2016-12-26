@@ -3,6 +3,6 @@ require 'koara/xml/xmlrenderer'
 
 module Koara
   module Xml
-    VERSION = "0.13.0"
+    VERSION = "0.14.0"
   end
 end
