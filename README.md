@@ -1,4 +1,4 @@
-[![Koara](http://www.koara.io/logo.png)](http://www.koara.io)
+[![Koara](http://www.codeaddslife.com/koara.png)](http://www.codeaddslife.com/koara)
 
 [![Build Status](https://img.shields.io/travis/koara/koara-rb-xml.svg)](https://travis-ci.org/koara/koara-rb-xml)
 [![Coverage Status](https://img.shields.io/coveralls/koara/koara-rb-xml.svg)](https://coveralls.io/github/koara/koara-rb-xml?branch=master)
@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/koara/koara-rb-xml/blob/master/LICENSE)
 
 # Koara-rb-xml
-[Koara](http://www.koara.io) is a modular lightweight markup language. This project can render the koara AST to Xml in Ruby.
+[Koara](http://www.codeaddslife.com/koara) is a modular lightweight markup language. This project can render the koara AST to Xml in Ruby.
 The AST is created by the [core koara parser](https://github.com/koara/koara-rb).
 
 ## Getting started
